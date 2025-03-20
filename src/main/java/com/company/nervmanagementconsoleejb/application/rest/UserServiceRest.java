@@ -5,9 +5,8 @@ import com.company.nervmanagementconsoleejb.application.model.dto.UserDto;
 import com.company.nervmanagementconsoleejb.domain.model.User;
 import com.company.nervmanagementconsoleejb.domain.service.RestService;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
@@ -16,25 +15,13 @@ import java.sql.SQLException;
 import java.util.List;
 
 //da vedere
+//http://localhost:8080/Nerv-Management-Console-EJB/rest/users/
 @Path("/users")
-@Stateless
 public class UserServiceRest {
-//    @EJB
+    @EJB
     private RestService restService;
 
     private final Mappers mappers = org.mapstruct.factory.Mappers.getMapper(Mappers.class);
-
-    //L'annotazione ejb non funge, quindi per il momento facciamo che ci peschiamo facendo lookup
-    public UserServiceRest() {
-        try {
-            InitialContext ctx = new InitialContext();
-                                                        //percorso jndi della risorsa
-            restService = (RestService) ctx.lookup("java:global/Nerv-Management-Console-EJB/RestServiceImpl!com.company.nervmanagementconsoleejb.domain.service.RestService");
-        } catch (NamingException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Ejb non recuperato", e);
-        }
-    }
 
     @GET
     @Path("/{userId}")

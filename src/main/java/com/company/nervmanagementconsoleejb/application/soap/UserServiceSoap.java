@@ -5,48 +5,24 @@ import com.company.nervmanagementconsoleejb.application.model.dto.UserDto;
 import com.company.nervmanagementconsoleejb.domain.model.User;
 import com.company.nervmanagementconsoleejb.domain.service.SoapService;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 
 import java.util.List;
 
 
-//java:global/Nerv-Management-Console-EJB/SoapServiceImpl!com.company.nervmanagementconsoleejb.domain.service.SoapService
-//java:app/Nerv-Management-Console-EJB/SoapServiceImpl!com.company.nervmanagementconsoleejb.domain.service.SoapService
-//java:module/SoapServiceImpl!com.company.nervmanagementconsoleejb.domain.service.SoapService
-//        java:global/Nerv-Management-Console-EJB/SoapServiceImpl
-//        java:app/Nerv-Management-Console-EJB/SoapServiceImpl
-//        java:module/SoapServiceImpl
-
-
-
-
-//da vedere
+//http://localhost:8080/Nerv-Management-Console-EJB/UserServiceSoap?wsdl
 @WebService
 public class UserServiceSoap {
+
+    @EJB
     private SoapService soapService;
 
     private final Mappers mappers = org.mapstruct.factory.Mappers.getMapper(Mappers.class);
-
-    @PostConstruct
-    public void init() {
-        try {
-            InitialContext ctx = new InitialContext();
-            //percorso jndi della risorsa
-            soapService = (SoapService) ctx.lookup("java:global/Nerv-Management-Console-EJB/SoapServiceImpl!com.company.nervmanagementconsoleejb.domain.service.SoapService");
-        } catch (NamingException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Ejb non recuperato", e);
-        }
-    }
 
     @WebMethod(operationName = "usersList")
     public List<UserDto> usersList() throws Exception {

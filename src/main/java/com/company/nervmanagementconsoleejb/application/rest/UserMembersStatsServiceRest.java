@@ -5,6 +5,7 @@ import com.company.nervmanagementconsoleejb.application.model.dto.UserMembersSta
 import com.company.nervmanagementconsoleejb.domain.model.UserMembersStats;
 import com.company.nervmanagementconsoleejb.domain.service.RestService;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -17,24 +18,12 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 //da vedere
-@Stateless
 @Path("/userMembers")
 public class UserMembersStatsServiceRest {
-//    @EJB
+    @EJB
     private RestService restService;
 
     private final Mappers mappers = org.mapstruct.factory.Mappers.getMapper(Mappers.class);
-
-    public UserMembersStatsServiceRest() {
-        try {
-            InitialContext ctx = new InitialContext();
-            //percorso jndi della risorsa
-            restService = (RestService) ctx.lookup("java:global/Nerv-Management-Console-EJB/RestServiceImpl!com.company.nervmanagementconsoleejb.domain.service.RestService");
-        } catch (NamingException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Ejb non recuperato", e);
-        }
-    }
 
     @GET
     @Path("/{userId}")

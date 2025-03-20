@@ -18,31 +18,10 @@ import javax.naming.NamingException;
 @WebService
 public class MissionEventServiceSoap {
 
+    @EJB
     private SoapService soapService;
 
     private final Mappers mappers = org.mapstruct.factory.Mappers.getMapper(Mappers.class);
-
-    /**
-     * @PostConstruct è un'annotazione usata per eseguire codice di inizializzazione
-     * DOPO che un oggetto è stato creato e tutte le dipendenze sono state injettate.
-     *
-     * Va usato con un metodo `init()`
-     * - Garantisce che le dipendenze (@EJB) siano già pronte.
-     * - Evita problemi di NullPointException o dipendenze non inizializzate.
-     * - Separazione chiara tra costruzione dell'oggetto e inizializzazione.
-     *
-     */
-    @PostConstruct
-    public void init() {
-        try {
-            InitialContext ctx = new InitialContext();
-            //percorso jndi della risorsa
-            soapService = (SoapService) ctx.lookup("java:global/Nerv-Management-Console-EJB/SoapServiceImpl!com.company.nervmanagementconsoleejb.domain.service.SoapService");
-        } catch (NamingException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Ejb non recuperato", e);
-        }
-    }
 
     @WebMethod(operationName = "addMissionEvent")
     public MissionDto addMissionEvent(@WebParam(name = "mission") MissionDto missionDto) {

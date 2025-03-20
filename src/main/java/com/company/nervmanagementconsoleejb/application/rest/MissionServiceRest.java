@@ -15,24 +15,12 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 //da vedere
-@Stateless
 @Path("/missions")
 public class MissionServiceRest {
-//    @EJB
+    @EJB
     private RestService restService;
 
     private final Mappers mappers = org.mapstruct.factory.Mappers.getMapper(Mappers.class);
-
-    public MissionServiceRest() {
-        try {
-            InitialContext ctx = new InitialContext();
-            //percorso jndi della risorsa
-            restService = (RestService) ctx.lookup("java:global/Nerv-Management-Console-EJB/RestServiceImpl!com.company.nervmanagementconsoleejb.domain.service.RestService");
-        } catch (NamingException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Ejb non recuperato", e);
-        }
-    }
 
     @GET
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
