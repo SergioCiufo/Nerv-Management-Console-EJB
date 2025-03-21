@@ -5,8 +5,6 @@
 //
 //import javax.ejb.Stateless;
 //import java.util.List;
-////da controllare l'injezione
-//@Stateless
 //public class MissionCodeGeneratorUtils {
 //    public String missionCodeGenerator(List<MissionArchive> missionArchive, Integer idMission){
 //        Integer missionTry=0;

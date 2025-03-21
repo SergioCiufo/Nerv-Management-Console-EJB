@@ -1,10 +1,8 @@
 package com.company.nervmanagementconsoleejb.domain.utils;
 
-import javax.ejb.Stateless;
 import java.util.List;
 import java.util.Random;
-//da controllare l'injezione
-@Stateless
+
 public class CalculateUtils {
 
     public Integer calculateAverage(List<Integer> list) {

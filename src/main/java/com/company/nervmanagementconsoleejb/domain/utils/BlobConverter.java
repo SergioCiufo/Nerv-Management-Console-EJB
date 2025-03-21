@@ -1,13 +1,11 @@
 package com.company.nervmanagementconsoleejb.domain.utils;
 
-import javax.ejb.Stateless;
 import javax.sql.rowset.serial.SerialBlob;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.sql.Blob;
 import java.util.Base64;
-//da controllare l'injezione
-@Stateless
+
 public class BlobConverter {
 
     // Converte un Blob in una stringa Base64

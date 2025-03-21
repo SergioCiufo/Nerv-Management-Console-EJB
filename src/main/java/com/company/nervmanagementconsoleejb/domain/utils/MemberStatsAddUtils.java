@@ -4,9 +4,8 @@ import com.company.nervmanagementconsoleejb.domain.model.Member;
 import com.company.nervmanagementconsoleejb.domain.model.User;
 import com.company.nervmanagementconsoleejb.domain.model.UserMembersStats;
 
-import javax.ejb.Stateless;
-//da controllare l'injezione
-@Stateless
+
+
 public class MemberStatsAddUtils {
     public UserMembersStats createStatsMembers(User user, Member member) {
         switch (member.getName()) {

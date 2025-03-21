@@ -1,10 +1,8 @@
 package com.company.nervmanagementconsoleejb.domain.utils;
 
-import javax.ejb.Stateless;
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
-//da controllare l'injezione
-@Stateless
+
 @Converter
 public class BooleanToCharConverterUtils implements AttributeConverter<Boolean, String> {
 

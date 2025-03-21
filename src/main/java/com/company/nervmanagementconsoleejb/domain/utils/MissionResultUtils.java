@@ -4,11 +4,9 @@ import com.company.nervmanagementconsoleejb.domain.model.Mission;
 import com.company.nervmanagementconsoleejb.domain.model.MissionParticipants;
 import com.company.nervmanagementconsoleejb.domain.model.UserMembersStats;
 
-import javax.ejb.Stateless;
 import java.util.ArrayList;
 import java.util.List;
-//da controllare l'injezione
-@Stateless
+
 public class MissionResultUtils {
     public Boolean missionResult(Mission mission, Integer idMission, List<UserMembersStats> ums) {
         Boolean result = null;

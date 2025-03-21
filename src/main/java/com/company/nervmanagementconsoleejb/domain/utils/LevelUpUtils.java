@@ -2,9 +2,7 @@ package com.company.nervmanagementconsoleejb.domain.utils;
 
 import com.company.nervmanagementconsoleejb.domain.model.Levelable;
 
-import javax.ejb.Stateless;
-//da controllare l'injezione
-@Stateless
+
 public class LevelUpUtils {
     public <T extends Levelable> T levelUp(T entity, Integer newExp) {
         if (entity == null || newExp == null) {

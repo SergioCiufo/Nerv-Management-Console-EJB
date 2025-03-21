@@ -4,8 +4,7 @@ import javax.ejb.Stateless;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-//da controllare l'injezione
-@Stateless
+
 //JAXB non supporta nativamente LocalDate,
 //quindi è necessario un XmlAdapter per serializzarlo correttamente come stringa (yyyy-MM-dd) in XML.
 public class LocalDateAdapterUtils extends XmlAdapter<String, LocalDate> {
